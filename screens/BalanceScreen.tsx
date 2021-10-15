@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { selectBalance, selectTransactions } from "../store/bankSelectors";
+import { selectBalance, selectTransactions } from "../store/bank/bankSelectors";
 import { useAppSelector } from "../store/store";
 
 function BalanceScreen() {
