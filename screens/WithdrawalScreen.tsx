@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { withdrawal } from "../store/bank/bankActions";
 import { useAppDispatch } from "../store/store";
 
 function WithdrawalScreen() {
@@ -8,7 +9,7 @@ function WithdrawalScreen() {
 
     const onSave = () => {
         if (!value) return;
-        dispatch({ type: "WITHDRAWAL", payload: value });
+        dispatch(withdrawal(value));
     }
 
     return (

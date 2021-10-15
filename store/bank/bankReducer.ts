@@ -1,17 +1,6 @@
+import { BankAction } from "./bankActions";
 
-export interface WithdrawalAction {
-    type: "WITHDRAWAL";
-    payload: number;
-}
-
-export interface DepositAction {
-    type: "DEPOSIT";
-    payload: number;
-}
-
-type KnownAction = WithdrawalAction | DepositAction;
-
-/* ------------------------------ */
+type KnownAction = BankAction;
 
 interface BankState {
     balance: number;
