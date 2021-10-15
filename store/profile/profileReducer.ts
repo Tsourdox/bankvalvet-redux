@@ -1,15 +1,16 @@
+import { WithdrawalAction } from "../bank/bankReducer";
 
-interface SetNameAction {
+export interface SetNameAction {
     type: "SET_NAME";
     payload: string;
 }
 
-interface SetSavingsGoalAction {
+export interface SetSavingsGoalAction {
     type: "SET_SAVINGS_GOAL";
     payload: number;
 }
 
-type KnownAction = SetNameAction | SetSavingsGoalAction;
+type KnownAction = SetNameAction | SetSavingsGoalAction | WithdrawalAction;
 
 /* ------------------------------ */
 
@@ -24,6 +25,7 @@ const initialState: ProfileState = {
 }
 
 function profileReducer(state: ProfileState = initialState, action: KnownAction): ProfileState {
+    console.log('profileReducer');
     switch (action.type) {
         case "SET_NAME": {
             return {
@@ -35,6 +37,12 @@ function profileReducer(state: ProfileState = initialState, action: KnownAction)
             return {
                 ...state,
                 savingsGoal: action.payload
+            }
+        }
+        case "WITHDRAWAL": {
+            return {
+                ...state,
+                savingsGoal: state.savingsGoal + 10
             }
         }
         default: return state;

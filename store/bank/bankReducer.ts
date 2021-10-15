@@ -1,10 +1,10 @@
 
-interface WithdrawalAction {
+export interface WithdrawalAction {
     type: "WITHDRAWAL";
     payload: number;
 }
 
-interface DepositAction {
+export interface DepositAction {
     type: "DEPOSIT";
     payload: number;
 }
@@ -24,6 +24,7 @@ const initialState: BankState = {
 }
 
 function bankReducer(state: BankState = initialState, action: KnownAction): BankState {
+    console.log('bankReducer');
     switch (action.type) {
         case "WITHDRAWAL": {
             return {
