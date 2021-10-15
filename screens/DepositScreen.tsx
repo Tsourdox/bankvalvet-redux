@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { deposit } from "../store/bank/bankActions";
 import { useAppDispatch } from "../store/store";
 
 function DepositScreen() {
@@ -8,7 +9,7 @@ function DepositScreen() {
 
     const onSave = () => {
         if (!value) return;
-        dispatch({ type: "DEPOSIT", payload: value });
+        dispatch(deposit(value));
     }
 
     return (

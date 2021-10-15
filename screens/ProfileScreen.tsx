@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import { setProfileName, setSavingsGoal } from "../store/profile/profileActions";
 import { useAppDispatch, useAppSelector } from "../store/store";
 
 function ProfileScreen() {
@@ -8,11 +9,11 @@ function ProfileScreen() {
     const savingsGoal = useAppSelector(state => state.profile.savingsGoal);
 
     const onSaveName = (name: string) => {
-        dispatch({ type: "SET_NAME", payload: name });
+        dispatch(setProfileName(name));
     }
 
     const onSaveGoal = (goal: string) => {
-        dispatch({ type: "SET_SAVINGS_GOAL", payload: Number(goal) });
+        dispatch(setSavingsGoal(Number(goal)));
     }
 
     return (

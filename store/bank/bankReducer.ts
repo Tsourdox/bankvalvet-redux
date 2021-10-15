@@ -1,19 +1,9 @@
 import { BankAction } from "./bankActions";
+import { BankState, initialState } from "./bankState";
 
 type KnownAction = BankAction;
 
-interface BankState {
-    balance: number;
-    transactions: number[];
-}
-
-const initialState: BankState = {
-    balance: 0,
-    transactions: []
-}
-
 function bankReducer(state: BankState = initialState, action: KnownAction): BankState {
-    console.log('bankReducer');
     switch (action.type) {
         case "WITHDRAWAL": {
             return {

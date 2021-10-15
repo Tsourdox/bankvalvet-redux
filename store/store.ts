@@ -3,6 +3,7 @@ import { AnyAction, applyMiddleware, combineReducers, createStore } from "redux"
 import thunk, { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { BankAction } from "./bank/bankActions";
 import bankReducer from "./bank/bankReducer";
+import { ProfileAction } from "./profile/profileActions";
 import profileReducer from "./profile/profileReducer";
 
 /* Combine multiple reducers into a larger state */
@@ -17,7 +18,7 @@ const thunkMiddleware = applyMiddleware<AppThunkDispatch>(thunk);
 const store = createStore(rootReducer, thunkMiddleware);
 
 /* Define types for our thunks */
-type KnownAction = BankAction; // add for all part states
+type KnownAction = BankAction | ProfileAction; // add for all part states
 export type AppThunkDispatch = ThunkDispatch<
     RootState,
     unknown,
