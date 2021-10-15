@@ -5,11 +5,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import BalanceScreen from "../screens/BalanceScreen";
 import DepositScreen from "../screens/DepositScreen";
 import WithdrawalScreen from "../screens/WithdrawalScreen";
+import ProfileScreen from '../screens/ProfileScreen';
 
 type RootTabParams = {
     Balance: undefined;
     Widthdrawal: undefined;
     Deposit: undefined;
+    Profile: undefined;
 };
 
 const Tabs = createBottomTabNavigator<RootTabParams>();
@@ -37,6 +39,13 @@ function RootNavigator() {
                     component={DepositScreen}
                     options={{ tabBarIcon: ({ color }) =>
                         <MaterialCommunityIcons name="bank-transfer-in" size={24} color={color} />
+                    }}
+                />
+                <Tabs.Screen
+                    name="Profile"
+                    component={ProfileScreen}
+                    options={{ tabBarIcon: ({ color }) =>
+                        <MaterialCommunityIcons name="face-profile" size={24} color={color} />
                     }}
                 />
             </Tabs.Navigator>
