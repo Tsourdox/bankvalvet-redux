@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface BankState {
     balance: number;
+    transactions: number[];
 }
 
 const initialState: BankState = {
-    balance: 1000
+    balance: 0,
+    transactions: []
 };
 
 const bankSlice = createSlice({
@@ -14,10 +16,12 @@ const bankSlice = createSlice({
     reducers: {
         deposit: (state, { payload }: PayloadAction<number>) => {
             state.balance += payload;
+            state.transactions.push(payload);
             return state;
         },
         withdrawal: (state, { payload }: PayloadAction<number>) => {
             state.balance -= payload;
+            state.transactions.push(-payload);
             return state;
         }
     }
