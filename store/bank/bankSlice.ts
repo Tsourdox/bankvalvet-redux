@@ -4,8 +4,12 @@ import { ThunkApi } from "../store";
 export const deposit = createAsyncThunk<number, number, ThunkApi>(
     'bank/deposit',
     async (amount, { dispatch, getState, rejectWithValue }) => {
-        // prata med api..
-        throw new Error('No can do!')
+        // trigga andra actions om du vill med distpach
+        // Läs ut data ifrån dit state med getState
+        // prata med api - await fetch()...
+        // Hantera fel med throw eller rejectWithValue
+        // Det måste returneras för att det ska fungera
+        // return rejectWithValue('No can do!');
         return amount;
     }
 );
@@ -45,7 +49,7 @@ const bankSlice = createSlice({
         });
         builder.addCase(deposit.rejected, (state, action) => {           
             state.isLoading = false;
-            state.errorMessage = action.error.message;
+            state.errorMessage = action.payload;
         });
 
         /* WITHDRAWAL */
