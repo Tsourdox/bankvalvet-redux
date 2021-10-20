@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { deposit } from "../store/bank/bankSlice";
-import { useAppDispatch } from "../store/store";
+import { useAppDispatch, useAppSelector } from "../store/store";
 
 function DepositScreen() {
     const dispatch = useAppDispatch();
+    const { isLoading, errorMessage } = useAppSelector(state => state.bank)
     const [value, setValue] = useState<number>();
 
     const onSave = () => {
@@ -22,6 +23,14 @@ function DepositScreen() {
                 onChangeText={(value) => setValue(Number(value))}
             />
             <Button title="Save" onPress={onSave}/>
+            
+            <Text>{isLoading && 'LADDAR!!'}</Text>
+            
+            {errorMessage && (
+                <Text style={{ color: 'red' }}>
+                    Error: {errorMessage}
+                </Text>
+            )}
         </View>
     )
 }
